@@ -12,6 +12,7 @@ export async function updateGuestAction(formData) {
     throw new Error("You must be logged in to update your profile.");
 
   const nationalID = formData.get("nationalID");
+  if (!nationalID) throw new Error("National ID is required.");
   const [nationality, countryFlag] = formData.get("nationality").split("%");
 
   if (!/^[a-zA-Z0-9]{6,12}$/.test(nationalID))
